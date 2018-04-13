@@ -52,4 +52,19 @@ spec:
               cpu: "500m"          
         ports:
           - name: http
-            containerPort: 8761           
+            containerPort: 8761  
+            
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: eureka-server
+  namespace: default
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: eureka-server
+  minReplicas: 1
+  maxReplicas: 2
+  targetCPUUtilizationPercentage: 50

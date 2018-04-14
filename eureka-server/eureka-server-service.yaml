@@ -1,23 +1,3 @@
-apiVersion: v1
-kind: Service
-metadata:
-  name: eureka-server
-  labels:
-    name: eureka-server
-    visualize: "true"
-spec:
-  ports:
-    - protocol: TCP
-      port: 8761
-      targetPort: 8761
-  selector:
-    name: eureka-server
-  sessionAffinity: None  
-  type: ClusterIP
-status:
-  loadBalancer: {}  
----
-
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -46,13 +26,30 @@ spec:
         resources:
             requests:
               memory: "128Mi"
-              cpu: "300m"
+              cpu: "100m"
             limits:
               memory: "256Mi"
               cpu: "500m"          
         ports:
           - name: http
-            containerPort: 8761  
+            containerPort: 8761
+---            
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: eureka-server
+  labels:
+    name: eureka-server
+    visualize: "true"
+spec:
+  selector:
+    app: eureka-server
+  ports:
+    - protocol: TCP
+      port: 8761
+      targetPort: 8761
+  sessionAffinity: None    
             
 ---
 apiVersion: autoscaling/v1

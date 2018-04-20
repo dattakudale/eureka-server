@@ -33,4 +33,8 @@ kubectl create -f eureka-server-service.yaml
 kubectl set image deployment/eureka-server eureka-server=gcr.io/appsutility-141503/eureka-server:v2
 
 
+## Create multiple instances ( Replicas )   , below will create 3 instances of eureka-server 
+
+kubectl scale deployment eureka-server --replicas=3
+
 

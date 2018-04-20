@@ -19,16 +19,18 @@ docker tag eureka-server:v1 gcr.io/appsutility-141503/eureka-server:v1
 
 gcloud docker -- push gcr.io/appsutility-141503/eureka-server:v1
 
-# If you want run and validate
+## If you want run and validate
 kubectl run eureka-server --image gcr.io/appsutility-141503/eureka-server:v1  
 
 
-#Deploy spring boot using Kubernet deployment file
+## Deploy spring boot using Kubernet deployment file
 
 kubectl create -f eureka-server-service.yaml	
 
 
+## Update deployment with v2 
 
+kubectl set image deployment/eureka-server eureka-server=gcr.io/appsutility-141503/eureka-server:v2
 
 
 

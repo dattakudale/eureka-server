@@ -12,7 +12,7 @@ docker build -t eureka-server:v1 .
 docker run eureka-server:v1
 
 
-## Run with Kubernetes  I am using google cloud so please use your porject 
+## Run with Kubernetes  using google cloud and use your porject.
 
 
 docker tag eureka-server:v1 gcr.io/appsutility-141503/eureka-server:v1

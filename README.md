@@ -23,7 +23,7 @@ gcloud docker -- push gcr.io/appsutility-141503/eureka-server:v1
 kubectl run eureka-server --image gcr.io/appsutility-141503/eureka-server:v1  
 
 
-## Deploy spring boot using Kubernet deployment file
+## Deploy spring boot using Kubernetes deployment file
 
 kubectl create -f eureka-server-service.yaml	
 

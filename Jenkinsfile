@@ -5,6 +5,7 @@ pipeline {
             steps {
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
                 sh 'mvn clean install'
+                sh 'docker build -t eureka-server:v1 .'
             }
         }
     }

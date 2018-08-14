@@ -25,8 +25,6 @@ pipeline {
 	      archive 'target/**/*.jar'
 	      junit 'target/**/*.xml'
 	    }
-	    success {
-	    }
     }    
     
 }

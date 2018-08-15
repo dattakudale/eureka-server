@@ -1,8 +1,16 @@
 pipeline {
-    agent { docker { image 'maven:3.3.3' } }  
+	
+  agent {
+    node {
+      label 'docker'
+    }
+  }
+	
     stages {
 	  
         stage('build') {
+	    agent { docker { image 'maven:3.3.3' } }  	
+		
             steps {
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
                 sh 'mvn clean install'

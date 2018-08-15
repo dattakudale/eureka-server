@@ -1,6 +1,6 @@
 pipeline {
 	
-   agent any 
+   agent none
 	
     stages {
 	  
@@ -19,6 +19,7 @@ pipeline {
         }
         
         stage('Make Container') {
+          agent any
 	      steps {
 			    sh "docker build -t eureka-server:${env.BUILD_ID} ."
 			    sh "docker tag eureka-server:${env.BUILD_ID} eureka-server:latest"

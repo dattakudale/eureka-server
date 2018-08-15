@@ -20,12 +20,6 @@ pipeline {
 	      }
     	}
     }
-    
-  post {
-	    always {
-	      archive 'target/**/*.jar'
-	      junit 'target/**/*.xml'
-	    }
-    }    
+     
     
 }

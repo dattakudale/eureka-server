@@ -22,7 +22,9 @@ spec:
       containers:
       - name: eureka-server
         image: gcr.io/appsutility-141503/eureka-server:v1
-        imagePullPolicy: Always     
+        imagePullPolicy: Always    
+        imagePullSecrets:
+          - name: gcr.io 
         resources:
             requests:
               memory: "128Mi"

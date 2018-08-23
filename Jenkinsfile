@@ -4,7 +4,7 @@ pipeline {
 	
     stages {
 	  
-        stage('build') {
+        stage('build and push') {
 	    	agent { 
 	    		docker { 
 	    					image 'maven:3.3.3' 
@@ -14,17 +14,10 @@ pipeline {
 		 
             steps {
                 echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
-                sh 'mvn clean install'
+                sh 'mvn compile jib:build -Djib.to.auth.username=${env.GOOGLE_REGISTRY_USERNAME} -Djib.to.auth.password=${env.GOOGLE_REGISTRY_PASSWORD}'
             }
         }
         
-        stage('Make Container') {
-          agent any
-	      steps {
-			    sh "docker build -t eureka-server:${env.BUILD_ID} ."
-			    sh "docker tag eureka-server:${env.BUILD_ID} eureka-server:latest"
-	      }
-    	}
     }
      
     

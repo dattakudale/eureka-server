@@ -1,4 +1,4 @@
-# eureka-server
+# eureka-server app
 
 ## Build with maven 
 mvn clean install
